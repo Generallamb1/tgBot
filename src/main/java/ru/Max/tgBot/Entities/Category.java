@@ -13,7 +13,7 @@ public class Category {
     @Column(nullable = false, length = 50, unique = true)
     private String name;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne
     private Category parent;
 
 
