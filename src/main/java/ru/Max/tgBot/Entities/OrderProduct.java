@@ -9,10 +9,10 @@ public class OrderProduct {
     @GeneratedValue
     private Long id;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     private ClientOrder clientOrder;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Product product;
 
     @Column(nullable = false)

@@ -9,6 +9,7 @@ public class Client {
     @GeneratedValue
     private Long id;
 
+
     @Column(nullable = false)
     private Long externalId;
 

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.util.Assert;
 import ru.Max.tgBot.DAO.CategoryRepository;
 import ru.Max.tgBot.DAO.ProductRepository;
 import ru.Max.tgBot.Entities.Category;
@@ -30,7 +31,7 @@ class FillingTests {
         final String[] DRINKS_CATEGORY_NAMES = {"Газированные напитки", "Энергетические напитки", "Соки", "Другие"};
 
 
-        var pizzaCategory = saveCategoryEntity("Пицца", null);
+        var pizzaCategory = createSubCategory("Пицца", null);
         for(int j = 0; j < 3; j++){
             createProduct(
                     pizzaCategory,
@@ -51,10 +52,10 @@ class FillingTests {
     }
 
     void createCategory(String categoryName, String[] names){
-        Category categoryId = saveCategoryEntity(categoryName, null);
+        Category categoryId = createSubCategory(categoryName, null);
 
         for(int i = 0; i < Array.getLength(names); i++){
-            Category subCategory = saveCategoryEntity(names[i], categoryId);
+            Category subCategory = createSubCategory(names[i], categoryId);
             for(int j = 0; j < 3; j++){
                 createProduct(
                         subCategory,
@@ -66,7 +67,7 @@ class FillingTests {
         }
     }
 
-    Category saveCategoryEntity(String categoryName, Category parent){
+    Category createSubCategory(String categoryName, Category parent){
         Category category = new Category();
         category.setName(categoryName);
         category.setParent(parent);
