@@ -9,7 +9,7 @@ public class ClientOrder {
     @GeneratedValue
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Client client;
 
     @Column(nullable = false)
@@ -17,8 +17,6 @@ public class ClientOrder {
 
     @Column(nullable = false, length = 15, precision = 2)
     private Double total;
-
-
 
     public Long getId() {
         return id;

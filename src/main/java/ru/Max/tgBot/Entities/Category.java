@@ -13,9 +13,8 @@ public class Category {
     @Column(nullable = false, length = 50, unique = true)
     private String name;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(optional = false)
     private Category parent;
-
 
     public Category getParent() {
         return parent;
